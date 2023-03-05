@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import { useState} from 'react'
 import { Routes, Route, useNavigate} from 'react-router-dom'
-import './App.css';
+// import './App.css';
 
 
 import * as authService from './services/authService'
@@ -26,7 +26,10 @@ function App() {
 
   return (
     <>
-      <NavBar handleLogout={handleLogout}/>
+      {
+        user &&
+        <NavBar handleLogout={handleLogout}/>
+      }
       <Routes>
         <Route path="/" element={<Landing handleSignupOrLogin={handleSignupOrLogin}/>} />
       </Routes>

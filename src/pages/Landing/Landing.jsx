@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Login from '../../components/Login/Login.jsx'
 import Signup from '../../components/Signup/Signup.jsx'
+import styles from './Landing.module.css'
 
 const Landing = (props) => {
   const [form, setForm]= useState("none")
@@ -10,18 +11,18 @@ const Landing = (props) => {
   }
 
   return (
-    <main>
+    <main className={styles.container}>
 
-      <div>
+      <div className={styles.top}>
         <h1>Love You</h1>
         <h1>More</h1>
-        <div>
-          <p onClick={() => handleForm("LogIn")} >LogIn</p>
-          <p onClick={() => handleForm("SignUp")} >Signup</p>
+        <div className={styles.handleForm}>
+          <p onClick={() => handleForm("LogIn")} className={styles.links}>LogIn</p>
+          <p onClick={() => handleForm("SignUp")} className={styles.links}>Signup</p>
         </div>
       </div>
       
-      <div>
+      <div className={styles.bottom}>
         { form === "LogIn" ?
           <Login {...props} handleForm={handleForm}/>
           : form === "SignUp" ?

@@ -1,0 +1,35 @@
+.container {
+  display: grid; 
+  grid-auto-columns: 1fr; 
+  grid-auto-rows: 1fr; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+  "top"
+  "bottom"; 
+  justify-items: center; 
+  align-items: center; 
+  background-image: linear-gradient(rgb(249, 108, 169) 50%, rgb(221, 221, 235) 50%);
+}
+
+.top{
+  grid-area: "top";
+  text-align: center;
+}
+
+.bottom{
+  text-align: center;
+  grid-area: "bottom";
+}
+
+.handleForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.links:hover {
+  color: blue;
+  text-decoration: underline;
+}
