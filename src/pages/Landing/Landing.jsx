@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Login from '../../components/Login/Login.jsx'
+import Signup from '../../components/Signup/Signup.jsx'
 
 const Landing = (props) => {
   const [form, setForm]= useState("none")
@@ -24,7 +25,7 @@ const Landing = (props) => {
         { form === "LogIn" ?
           <Login {...props} handleForm={handleForm}/>
           : form === "SignUp" ?
-          <div>hiii</div>
+          <Signup {...props} handleForm={handleForm}/>
           :
           <h4>about the app</h4>
         }

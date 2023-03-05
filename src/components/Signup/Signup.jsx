@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import LoginForm from '../LoginForm/LoginForm.jsx'
+import SignupForm from '../SignupForm/SignupForm.jsx'
 
-const Login = props => {
+const Signup = props => {
   const [message, setMessage] = useState([''])
 
   const updateMessage = msg => {
@@ -10,15 +10,15 @@ const Login = props => {
 
   return (
     <>
-      <h2>Log In</h2>
+      <h2>Sign Up</h2>
       <p>{message}</p>
-      <LoginForm
-        handleSignupOrLogin={props.handleSignupOrLogin}
-        updateMessage={updateMessage}
+      <SignupForm 
+        {...props} 
+        updateMessage={updateMessage} 
         handleForm={props.handleForm}
       />
     </>
   )
 }
 
-export default Login
+export default Signup

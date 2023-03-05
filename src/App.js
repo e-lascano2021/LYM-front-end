@@ -5,7 +5,7 @@ import './App.css';
 
 
 import * as authService from './services/authService'
-import Landing from './pages/Landing/Landing';
+import Landing from './pages/Landing/Landing.jsx';
 
 
 function App() {
