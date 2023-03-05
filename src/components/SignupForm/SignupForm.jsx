@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as authService from '../../services/authService'
+import styles from './SignupForm.module.css'
 
 const SignupForm = props => {
   const navigate = useNavigate()
@@ -40,8 +41,9 @@ const SignupForm = props => {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
+      className={styles.form}
     >
-      <div>
+      <div className={styles.flexEnd}>
         <label htmlFor="name" >Name:</label>
         <input
           type="text"
@@ -52,7 +54,7 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div className={styles.flexEnd}>
         <label htmlFor="email" >Email:</label>
         <input
           type="text"
@@ -63,7 +65,7 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div className={styles.flexEnd}>
         <label htmlFor="password">Password:</label>
         <input
           type="password"
@@ -74,7 +76,7 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div className={styles.flexEnd}>
         <label htmlFor="confirm">
           Confirm Password:
         </label>
