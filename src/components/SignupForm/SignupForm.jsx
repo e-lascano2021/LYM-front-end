@@ -5,6 +5,9 @@ import styles from './SignupForm.module.css'
 
 const SignupForm = props => {
   const navigate = useNavigate()
+  const [photoData, setPhotoData] = useState({
+    photo: null
+  })
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,7 +26,7 @@ const SignupForm = props => {
   const handleSubmit = async e => {
     e.preventDefault()
     try {
-      await authService.signup(formData)
+      await authService.signup(formData, photoData)
       props.handleSignupOrLogin()
       navigate('/loveArmy')
     } catch (err) {
@@ -37,6 +40,10 @@ const SignupForm = props => {
     return !(name && email && password && password === passwordConf)
   }
 
+  const handleChangePhoto = (evt) => {
+    if (evt.target.files) setPhotoData({ photo: evt.target.files.item(0) })
+  }
+
   return (
     <form
       autoComplete="off"
@@ -44,7 +51,18 @@ const SignupForm = props => {
       className={styles.form}
     >
       <div className={styles.flexEnd}>
-        <label htmlFor="name" >Name:</label>
+        <label htmlFor="photo-upload">
+          Upload Photo
+        </label>
+        <input
+          type="file"
+          id="photo-upload"
+          name="photo"
+          onChange={handleChangePhoto}
+        />
+      </div>
+      <div className={styles.flexEnd}>
+        <label htmlFor="name">Name:</label>
         <input
           type="text"
           autoComplete="off"
@@ -55,7 +73,7 @@ const SignupForm = props => {
         />
       </div>
       <div className={styles.flexEnd}>
-        <label htmlFor="email" >Email:</label>
+        <label htmlFor="email">Email:</label>
         <input
           type="text"
           autoComplete="off"
