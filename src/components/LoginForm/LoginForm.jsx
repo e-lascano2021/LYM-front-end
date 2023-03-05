@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as authService from '../../services/authService'
+import styles from './LoginForm.module.css'
 
 const LoginForm = props => {
   const [formData, setFormData] = useState({
@@ -29,8 +30,9 @@ const LoginForm = props => {
     <form
       autoComplete="off"
       onSubmit={handleSubmit}
+      className={styles.form}
     >
-      <div>
+      <div className={styles.flexEnd}>
         <label htmlFor="email">Email:</label>
         <input
           type="text"
@@ -41,7 +43,7 @@ const LoginForm = props => {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div className={styles.flexEnd}>
         <label htmlFor="password">Password:</label>
         <input
           type="password"
