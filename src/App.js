@@ -1,12 +1,12 @@
 // import logo from './logo.svg';
 import { useState} from 'react'
 import { Routes, Route, useNavigate} from 'react-router-dom'
-// import './App.css';
 
 
 import * as authService from './services/authService'
 import Landing from './pages/Landing/Landing.jsx';
 import NavBar from './components/NavBar/NavBar';
+import AddArmy from './pages/AddArmy/AddArmy';
 
 
 function App() {
@@ -30,8 +30,28 @@ function App() {
         user &&
         <NavBar handleLogout={handleLogout}/>
       }
+
+
       <Routes>
-        <Route path="/" element={<Landing handleSignupOrLogin={handleSignupOrLogin}/>} />
+
+        <Route path="/" 
+          element={
+            <Landing 
+              handleSignupOrLogin={handleSignupOrLogin}
+            />
+          } 
+        />
+
+
+        <Route path="/loveArmy/new" 
+          element={
+            <AddArmy 
+            
+            />
+          }
+        />
+
+
       </Routes>
     </>
   );
