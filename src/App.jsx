@@ -3,6 +3,7 @@ import { useState} from 'react'
 import { Routes, Route, useNavigate} from 'react-router-dom'
 
 
+import * as armyService from './services/armyService.js'
 import * as authService from './services/authService.js'
 import Landing from './pages/Landing/Landing.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
@@ -22,6 +23,12 @@ function App() {
     authService.logout()
     setUser(null)
     navigate('/')
+  }
+
+  const handleAddArmy = async (formData) => {
+    const newArmy = await armyService.createArmy(formData)
+    console.log(newArmy)
+    navigate('/loveArmy')
   }
 
   return (
@@ -46,7 +53,7 @@ function App() {
         <Route path="/loveArmy/new" 
           element={
             <AddArmy 
-            
+              handleAddArmy={handleAddArmy}
             />
           }
         />
