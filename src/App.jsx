@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import { useState} from 'react'
+import { useEffect, useState} from 'react'
 import { Routes, Route, useNavigate} from 'react-router-dom'
 
 
@@ -12,8 +12,8 @@ import AddArmy from './pages/AddArmy/AddArmy.jsx';
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
+  const [armies, setArmies] = useState([])
   const navigate = useNavigate()
-
 
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
@@ -24,6 +24,14 @@ function App() {
     setUser(null)
     navigate('/')
   }
+
+  useEffect(() => {
+    const fetchArmy = async () => {
+        const armyList = await armyService.getArmy()
+        setArmies(armyList)
+    }
+    if (user) fetchArmy()
+  }, [user])
 
   const handleAddArmy = async (formData) => {
     const newArmy = await armyService.createArmy(formData)
@@ -49,7 +57,6 @@ function App() {
           } 
         />
 
-
         <Route path="/loveArmy/new" 
           element={
             <AddArmy 
@@ -57,7 +64,6 @@ function App() {
             />
           }
         />
-
 
       </Routes>
     </>
