@@ -8,6 +8,7 @@ import * as authService from './services/authService.js'
 import Landing from './pages/Landing/Landing.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
 import AddArmy from './pages/AddArmy/AddArmy.jsx';
+import Army from './pages/Army/Army.jsx';
 
 
 function App() {
@@ -53,6 +54,14 @@ function App() {
           element={
             <Landing 
               handleSignupOrLogin={handleSignupOrLogin}
+            />
+          } 
+        />
+
+        <Route path="/loveArmy" 
+          element={
+            <Army 
+              armies={armies}
             />
           } 
         />
