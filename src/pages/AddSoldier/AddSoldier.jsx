@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
 
-const AddArmy = ({handleAddArmy}) => {
+const AddSoldier = ({handleAddSoldier}) => {
   const loveTypesOptions = [
     { value: "Eros", label: "Eros" },
     { value: "Philia", label: "Philia" },
@@ -41,7 +41,7 @@ const AddArmy = ({handleAddArmy}) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    handleAddArmy(formData)
+    handleAddSoldier(formData)
   }
 
   return (
@@ -87,4 +87,4 @@ const AddArmy = ({handleAddArmy}) => {
   )
 }
 
-export default AddArmy
+export default AddSoldier

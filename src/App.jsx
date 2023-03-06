@@ -7,13 +7,13 @@ import * as armyService from './services/armyService.js'
 import * as authService from './services/authService.js'
 import Landing from './pages/Landing/Landing.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
-import AddArmy from './pages/AddArmy/AddArmy.jsx';
+import AddSoldier from './pages/AddSoldier/AddSoldier.jsx';
 import Army from './pages/Army/Army.jsx';
 
 
 function App() {
   const [user, setUser] = useState(authService.getUser())
-  const [armies, setArmies] = useState([])
+  const [army, setArmy] = useState([])
   const navigate = useNavigate()
 
   const handleSignupOrLogin = () => {
@@ -28,15 +28,15 @@ function App() {
 
   useEffect(() => {
     const fetchArmy = async () => {
-        const armyList = await armyService.getArmy()
-        setArmies(armyList)
+        const armyData = await armyService.getArmy()
+        setArmy(armyData)
     }
     if (user) fetchArmy()
   }, [user])
 
-  const handleAddArmy = async (formData) => {
-    const newArmy = await armyService.createArmy(formData)
-    console.log(newArmy)
+  const handleAddSoldier = async (formData) => {
+    const newSoldier = await armyService.createSoldier(formData)
+    setArmy([...army, newSoldier])
     navigate('/loveArmy')
   }
 
@@ -61,15 +61,15 @@ function App() {
         <Route path="/loveArmy" 
           element={
             <Army 
-              armies={armies}
+              army={army}
             />
           } 
         />
 
         <Route path="/loveArmy/new" 
           element={
-            <AddArmy 
-              handleAddArmy={handleAddArmy}
+            <AddSoldier 
+              handleAddSoldier={handleAddSoldier}
             />
           }
         />

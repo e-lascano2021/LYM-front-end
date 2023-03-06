@@ -1,8 +1,8 @@
 const Army = (props) => {
   return (
     <main>
-      {props.armies.map(army => 
-        <li> {army.name}</li>
+      {props.army.map((soldier,idx) => 
+        <li key={idx}> {soldier.name}</li>
       )}
     </main>
   )

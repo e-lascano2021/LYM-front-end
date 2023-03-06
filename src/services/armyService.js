@@ -14,8 +14,7 @@ async function getArmy () {
   }
 }
 
-async function createArmy (formData) {
-  console.log(formData)
+async function createSoldier (formData) {
   try {
     const res = await fetch(`${BASE_URL}/`, {
       method: 'POST',
@@ -32,6 +31,6 @@ async function createArmy (formData) {
 }
 
 export {
-  createArmy,
+  createSoldier,
   getArmy
 }
