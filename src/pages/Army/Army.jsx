@@ -1,8 +1,20 @@
+import { Link } from 'react-router-dom'
+import SoldierCard from "../../components/SoldierCard/SoldierCard"
+
 const Army = (props) => {
   return (
     <main>
+      <div>
+        <h1>LoveArmy</h1>
+        <Link to='/loveArmy/new'>
+          <button>Add Soldier</button>
+        </Link>
+      </div>
+
+      <br/>
+
       {props.army.map((soldier,idx) => 
-        <li key={idx}> {soldier.name}</li>
+        <SoldierCard key={idx} soldier={soldier}/>
       )}
     </main>
   )
