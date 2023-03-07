@@ -1,3 +1,4 @@
+import BrowniePoints from '../BrowniePoints/BrowniePoints'
 import styles from './SoldierCard.module.css'
 
 const SoldierCard = ({soldier}) => {
@@ -14,8 +15,8 @@ const SoldierCard = ({soldier}) => {
         <br/>
         <h6>Love Languages:</h6>
         <p>{soldier.loveLanguages?.join(", ")}</p>
+      <BrowniePoints soldier={soldier}/>
       </div>
-
     </div>
   )
 }
