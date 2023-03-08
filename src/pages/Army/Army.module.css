@@ -1,3 +1,8 @@
+.main{
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -5,4 +10,21 @@
   align-content: center;
   justify-items: center;
   align-items: center;
+}
+
+.cardContainer:hover {
+  overflow: hidden;
+  overflow-y:scroll;
+}
+
+.cardContainer{
+  max-width: 800px;
+  display:flex;
+  flex-direction: column;
+  align-self: center;
+  overflow-y:hidden;
+  overflow-x: hidden;
+  width: 80%;
+  height: 70vh;
+  margin: 20px 
 }

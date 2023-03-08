@@ -1,22 +1,27 @@
 .card {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
+  background-color:rgb(207, 237, 232);
+  text-align: center;
 }
 
 .card > img {
-  height: 200px;
-  width: 100px
+  align-self: center; 
+  max-height: 170px;
+  max-width: 140px
+}
+
+.cardInfo > h2  {
+  margin-bottom: 20px;
 }
 
 .cardInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
+  padding-top: 10px;
   contain: content;
   width: 80%;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .cardInfo * {
