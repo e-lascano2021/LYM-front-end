@@ -9,6 +9,7 @@ import Landing from './pages/Landing/Landing.jsx';
 import NavBar from './components/NavBar/NavBar.jsx';
 import AddSoldier from './pages/AddSoldier/AddSoldier.jsx';
 import Army from './pages/Army/Army.jsx';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
 
 
 function App() {
@@ -60,17 +61,21 @@ function App() {
 
         <Route path="/loveArmy" 
           element={
-            <Army 
-              army={army}
-            />
+            <ProtectedRoute user={user}>
+              <Army 
+                army={army}
+              />
+            </ProtectedRoute>
           } 
         />
 
         <Route path="/loveArmy/new" 
           element={
-            <AddSoldier 
-              handleAddSoldier={handleAddSoldier}
-            />
+            <ProtectedRoute user={user}>
+              <AddSoldier 
+                handleAddSoldier={handleAddSoldier}
+              />
+              </ProtectedRoute>
           }
         />
 
