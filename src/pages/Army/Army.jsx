@@ -1,15 +1,23 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import SoldierCard from '../../components/SoldierCard/SoldierCard'
+import Pagination from '../../components/Pagination/Pagination.jsx'
+import SoldierCard from '../../components/SoldierCard/SoldierCard.jsx'
 import styles from './Army.module.css'
 const Army = (props) => {
   const [input, setInput] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
+  const cardsPerPage = 4
 
+  const indexOfLastCard = currentPage * cardsPerPage
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage
+  
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  
   const handleInput = (e) => {
     const search = e.target.value
     setInput(search)
   }
-
+  
   const filteredArmy = props.army.filter((soldier) => {
     if (input === "") {
       return soldier
@@ -17,6 +25,8 @@ const Army = (props) => {
       return soldier.name.toLowerCase().includes(input.toLowerCase())
     }
   })
+  
+  const currentCards = filteredArmy.slice(indexOfFirstCard, indexOfLastCard)
 
   return (
     <main className={styles.main}>
@@ -36,11 +46,15 @@ const Army = (props) => {
 
 
       <div className={styles.cardContainer}>
-        {filteredArmy.map((soldier,idx) => 
+        {currentCards.map((soldier,idx) => 
           <SoldierCard key={idx} soldier={soldier}/>
         )}
+        <Pagination
+          cardsPerPage={cardsPerPage}
+          totalCards={filteredArmy.length}
+          paginate={paginate}
+        />
       </div>
-
     </main>
   )
 }
