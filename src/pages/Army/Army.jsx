@@ -47,7 +47,9 @@ const Army = (props) => {
 
       <div className={styles.cardContainer}>
         {currentCards.map((soldier,idx) => 
-          <SoldierCard key={idx} soldier={soldier}/>
+          <Link key={idx} to={`/loveArmy/${soldier._id}`} state={soldier}>
+            <SoldierCard soldier={soldier}/>
+          </Link>
         )}
         <Pagination
           cardsPerPage={cardsPerPage}

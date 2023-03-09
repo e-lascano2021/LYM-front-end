@@ -10,6 +10,7 @@ import NavBar from './components/NavBar/NavBar.jsx';
 import AddSoldier from './pages/AddSoldier/AddSoldier.jsx';
 import Army from './pages/Army/Army.jsx';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
+import Soldier from './pages/Soldier/Soldier.jsx';
 
 
 function App() {
@@ -65,6 +66,14 @@ function App() {
               <Army 
                 army={army}
               />
+            </ProtectedRoute>
+          } 
+        />
+
+        <Route path="/loveArmy/:id" 
+          element={
+            <ProtectedRoute user={user}>
+              <Soldier/>
             </ProtectedRoute>
           } 
         />
