@@ -20,6 +20,8 @@ const AddSoldier = ({handleAddSoldier}) => {
     { value: "Physical Touch", label: "Physical Touch" },
   ]
 
+  const [image, setImage] = useState({photo: null})
+  
   const [formData, setFormData] = useState({
     name: '',
     loveTypes: [],
@@ -37,11 +39,14 @@ const AddSoldier = ({handleAddSoldier}) => {
   const handleChange = e => {  
     setFormData({...formData, [e.target?.name]: e.target?.value}) 
   }
-  
+
+  const handleImage = (evt) => {
+    if (evt.target.files) setImage({ photo: evt.target.files.item(0) })
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
-    handleAddSoldier(formData)
+    handleAddSoldier(formData, image)
   }
 
   return (
@@ -58,7 +63,7 @@ const AddSoldier = ({handleAddSoldier}) => {
             onChange={handleChange}
           />
         </div>
-{/* 
+
         <div className='form-group right'>
           <label className='label-title'>Add an Image: </label>
           <input className="form-input"
@@ -68,7 +73,7 @@ const AddSoldier = ({handleAddSoldier}) => {
             onChange={handleImage}
           />
         </div>
-         */}
+        
         <div>
           <label> Add Love Types</label>
           <Select name="loveTypes" onChange={handleLoveTypes} isMulti closeMenuOnSelect={false} options={loveTypesOptions}/>
