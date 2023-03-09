@@ -14,6 +14,19 @@ async function getArmy () {
   }
 }
 
+async function getSoldier (id) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: "GET",
+      headers: { 'Authorization': 'Bearer ' + tokenService.getToken() },
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
 async function addPhoto(photoData, id) {
   try {
     const res = await fetch(`${BASE_URL}/${id}/add-photo`, {
@@ -57,5 +70,6 @@ async function createSoldier (formData, photoData) {
 
 export {
   createSoldier,
+  getSoldier,
   getArmy
 }
