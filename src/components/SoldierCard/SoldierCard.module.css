@@ -8,8 +8,9 @@
 
 .card > img {
   align-self: center; 
+  min-height: 120px;
   max-height: 170px;
-  max-width: 140px
+  max-width: 140px;
 }
 
 .cardInfo > h2  {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
+import styles from './AddSoldier.module.css'
 
 const AddSoldier = ({handleAddSoldier}) => {
   const loveTypesOptions = [
@@ -50,42 +51,64 @@ const AddSoldier = ({handleAddSoldier}) => {
   }
 
   return (
-    <main>
+    <main className={styles.main}>
       <form onSubmit= {handleSubmit}>
-        <div className='form-group left'>            
-          <label className='label-name'>Add Name: </label>            
-          <input className="form-input"
-            required
-            name="name"
-            autoComplete='off'
-            placeholder="Enter Name here"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className='form-group right'>
-          <label className='label-title'>Add an Image: </label>
-          <input className="form-input"
-            required
-            type='file'
-            name="image"
-            onChange={handleImage}
-          />
+        <div className={styles.image}>
+          <div>
+            <label>Add an Image:</label>
+            <input
+              required
+              type='file'
+              name="image"
+              onChange={handleImage}
+            />
+          </div>
         </div>
         
-        <div>
-          <label> Add Love Types</label>
-          <Select name="loveTypes" onChange={handleLoveTypes} isMulti closeMenuOnSelect={false} options={loveTypesOptions}/>
+        <div className={styles.name}>
+          <div>
+            <label>Add Name:</label>            
+            <input
+              required
+              name="name"
+              autoComplete='off'
+              placeholder="Enter Name here"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>         
         </div>
 
-        <div>
-        <label> Add Love Languages</label>
-          <Select name="loveLanguages" onChange={handleLoveLanguages} isMulti closeMenuOnSelect={false} options={loveLanguagesOptions}/>
+        <div className={styles.types}>
+          <div>
+            <label>Add Love Types:</label>
+            <Select required
+              isMulti
+              name="loveTypes"
+              closeMenuOnSelect={false}
+              options={loveTypesOptions}
+              onChange={handleLoveTypes}
+            />
+          </div>
         </div>
 
-        <div className='createBtn-wrapper'>
-          <button type="submit" className='createBtn'>Create Post</button>
+        <div className={styles.languages}>
+          <div>
+            <label>Add Love Languages:</label>
+            <Select required
+              isMulti
+              name="loveLanguages"
+              closeMenuOnSelect={false}
+              options={loveLanguagesOptions}
+              onChange={handleLoveLanguages}
+            />
+          </div>
+        </div>
+
+        <div className={styles.submit}>
+          <div>
+            <button type="submit">Create Soldier</button>
+          </div>
         </div>
       </form>
     </main>
