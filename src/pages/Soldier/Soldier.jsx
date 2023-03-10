@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState} from 'react'
-import { getSoldier } from "../../services/armyService"
+import { getSoldier } from "../../services/armyService.js"
 const Soldier = () => {
   let { id } = useParams()
   let [soldier, setSoldier] = useState(null)
