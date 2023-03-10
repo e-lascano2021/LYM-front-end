@@ -27,6 +27,7 @@ const Army = (props) => {
   })
   
   const currentCards = filteredArmy.slice(indexOfFirstCard, indexOfLastCard)
+  if(!props.army.length) return <h1>Loading ...</h1>
 
   return (
     <main className={styles.main}>
@@ -36,14 +37,13 @@ const Army = (props) => {
           <button>Add Soldier</button>
         </Link>
       </div>
+      
       <br/>
 
       <div>
         <label> Search for soldier:</label>
         <input onChange={handleInput}/>
       </div>
-
-
 
       <div className={styles.cardContainer}>
         {currentCards.map((soldier,idx) => 

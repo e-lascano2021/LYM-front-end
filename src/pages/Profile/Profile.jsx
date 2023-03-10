@@ -13,7 +13,6 @@ const Profile = ({user}) => {
   }, [user])
 
   if (!profile) return <h1>Loading ...</h1>
-  console.log(profile)
 
   return (
     <>

@@ -9,7 +9,7 @@ const Pagination = (props) => {
   return (
     <div>
       <div>
-        {pageNumbers.map(number => (
+        {(pageNumbers.length > 1) && pageNumbers.map(number => (
           <button key={number} onClick={() => props.paginate(number)}>
             {number}
           </button>

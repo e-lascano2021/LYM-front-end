@@ -89,13 +89,13 @@ function App() {
           }
         />
         
-        <Route path="profile" 
+        <Route path="/profile" 
           element={
             <ProtectedRoute user={user}>
               <Profile 
                 user={user}
               />
-              </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
 
