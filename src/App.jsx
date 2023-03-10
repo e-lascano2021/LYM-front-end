@@ -11,6 +11,7 @@ import AddSoldier from './pages/AddSoldier/AddSoldier.jsx';
 import Army from './pages/Army/Army.jsx';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.jsx';
 import Soldier from './pages/Soldier/Soldier.jsx';
+import Profile from './pages/Profile/Profile.jsx';
 
 
 function App() {
@@ -83,6 +84,16 @@ function App() {
             <ProtectedRoute user={user}>
               <AddSoldier 
                 handleAddSoldier={handleAddSoldier}
+              />
+              </ProtectedRoute>
+          }
+        />
+        
+        <Route path="profile" 
+          element={
+            <ProtectedRoute user={user}>
+              <Profile 
+                user={user}
               />
               </ProtectedRoute>
           }

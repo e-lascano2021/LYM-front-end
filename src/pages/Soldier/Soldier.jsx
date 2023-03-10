@@ -17,9 +17,25 @@ const Soldier = () => {
   if(soldier.err) return <h1>{soldier.err}</h1>
 
   return (
-    <div>
-      {soldier.name}
-    </div>
+    <main>
+
+      <div>
+        {/* <img src={soldier.image} alt={`${soldier.name}`}></img> */}
+        <h2>{soldier.name}</h2>
+      </div>
+
+      <div>
+        <h6>Love Types: </h6>
+        <p>{soldier.loveTypes?.join(", ")}</p>
+        <br/>
+        <h6>Love Languages: </h6>
+        <p>{soldier.loveLanguages?.join(", ")}</p>
+        <br/>
+        <h6>Brownie Points:</h6>
+        <p>{soldier.currentPoints}/{soldier.totalPoints}</p>
+      </div>
+
+    </main>
   )
 }
 
