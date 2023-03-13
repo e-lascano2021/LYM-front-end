@@ -37,6 +37,7 @@ function App() {
     if (user) fetchArmy()
   }, [user])
 
+
   const handleAddSoldier = async (formData, photoData) => {
     const newSoldier = await armyService.createSoldier(formData, photoData)
     setArmy([...army, newSoldier])

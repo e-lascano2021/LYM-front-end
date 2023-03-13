@@ -27,7 +27,6 @@ const Army = (props) => {
   })
   
   const currentCards = filteredArmy.slice(indexOfFirstCard, indexOfLastCard)
-  if(!props.army.length) return <h1>Loading ...</h1>
 
   return (
     <main className={styles.main}>

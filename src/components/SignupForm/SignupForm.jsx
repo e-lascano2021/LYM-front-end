@@ -1,9 +1,27 @@
 import { useState } from 'react'
+import Select from 'react-select'
 import { useNavigate } from 'react-router-dom'
 import * as authService from '../../services/authService'
 import styles from './SignupForm.module.css'
 
 const SignupForm = props => {
+  const loveTypesOptions = [
+    { value: "Eros", label: "Eros" },
+    { value: "Philia", label: "Philia" },
+    { value: "Storge", label: "Storge" },
+    { value: "Agape", label: "Agape" },
+    { value: "Ludus", label: "Ludus" },
+    { value: "Pragma", label: "Pragma" },
+    { value: "Philautia", label: "Philautia" },
+    { value: "Mania", label: "Mania" },
+  ]
+  const loveLanguagesOptions = [
+    { value: "Words of Affirmation", label: "Words of Affirmation" },
+    { value: "Acts of Service", label: "Acts of Service" },
+    { value: "Receiving Gifts", label: "Receiving Gifts" },
+    { value: "Quality Time", label: "Quality Time" },
+    { value: "Physical Touch", label: "Physical Touch" },
+  ]
   const navigate = useNavigate()
   const [photoData, setPhotoData] = useState({
     photo: null
@@ -13,6 +31,8 @@ const SignupForm = props => {
     email: '',
     password: '',
     passwordConf: '',
+    loveTypes: [],
+    loveLanguages: []
   })
 
   const handleChange = e => {
@@ -21,6 +41,14 @@ const SignupForm = props => {
       ...formData,
       [e.target.name]: e.target.value,
     })
+  }
+
+  const handleLoveLanguages = e => {
+    setFormData({...formData, "loveLanguages": e })
+  }
+
+  const handleLoveTypes = e => {
+    setFormData({...formData, "loveTypes": e })
   }
 
   const handleSubmit = async e => {
@@ -107,6 +135,33 @@ const SignupForm = props => {
           onChange={handleChange}
         />
       </div>
+
+      <div className={styles.types}>
+          <div>
+            <label>Add Love Types:</label>
+            <Select required
+              isMulti
+              name="loveTypes"
+              closeMenuOnSelect={false}
+              options={loveTypesOptions}
+              onChange={handleLoveTypes}
+            />
+          </div>
+        </div>
+
+        <div className={styles.languages}>
+          <div>
+            <label>Add Love Languages:</label>
+            <Select required
+              isMulti
+              name="loveLanguages"
+              closeMenuOnSelect={false}
+              options={loveLanguagesOptions}
+              onChange={handleLoveLanguages}
+            />
+          </div>
+        </div>
+
       <div>
         <button disabled={isFormInvalid()}>
           Sign Up
