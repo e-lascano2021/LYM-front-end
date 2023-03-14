@@ -7,10 +7,12 @@
 }
 
 .card > img {
-  align-self: center; 
-  min-height: 120px;
-  max-height: 170px;
   max-width: 140px;
+  align-self: center;
+  width: 30%;
+  object-fit: contain;
+  border: 4px double black;
+  margin: 10px;;
 }
 
 .cardInfo > h2  {
