@@ -15,6 +15,12 @@ const Soldier = () => {
     fetchSoldier()
   }, [id])
 
+  const [tab, setTab] = useState("Reminders")
+
+  const handleTab = (tabName) => {
+    setTab(tabName)
+  }
+
   if(!soldier) return <h1>Loading ...</h1>
   if(soldier.err) return <h1>{soldier.err}</h1>
 
@@ -36,6 +42,28 @@ const Soldier = () => {
           <br/>
           <h6>Brownie Points:</h6>
           <p>{soldier.currentPoints}/{soldier.totalPoints}</p>
+        </div>
+
+      </div>
+
+      <div className={styles.body}>
+        <div className={styles.tab}>
+          <p onClick={() => handleTab("Reminders")}>Reminders</p>
+          <p onClick={() => handleTab("Plans")}>Dates/Hangouts</p>
+          <p onClick={() => handleTab("Gifts")}>Gifts</p>
+          <p onClick={() => handleTab("Core Memories")}>Core Memories</p>
+        </div>
+
+        <div>
+          {tab === "Reminders" ? 
+            <p>{tab}</p> :
+          tab === "Plans" ?
+            <p>{tab}</p> :
+          tab === "Gifts" ?
+            <p>{tab}</p> 
+          :
+            <p>{tab}</p>
+          }
         </div>
       </div>
 

@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row;
   top: 0;
-  height: 25%;
+  height: 30%;
   margin: 10px;
   border: double black 4px;
   border-radius: 15px;
@@ -26,12 +26,15 @@
 .header * img {
   border: 1px solid black;
   border-radius: 10px;
-  height: 65%;
+  max-width: 180px;
+  height: 60%;
   object-fit: contain;
 }
 
 .imageContainer > h2 {
   margin: 0px;
+  text-decoration: underline peachpuff;
+  text-decoration-skip-ink: auto;
 }
 
 .headerInfo {
@@ -40,8 +43,34 @@
   justify-content: center;
   align-items: center;
   width: 65%;
+  text-align: center;
 }
 
 .headerInfo * {
   margin: 0px;
 }
+
+.body  {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
+
+.tab {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  border: 1px solid black;
+
+}
+
+.tab > p {
+  width: 25%;
+  padding: 7px 0;
+  text-align: center;
+  margin: 0px;
+  border: 1px solid black;
+}
+
+
