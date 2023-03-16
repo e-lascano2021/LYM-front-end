@@ -10,7 +10,7 @@
   "bottom"; 
   justify-items: center; 
   align-items: center; 
-  background-image: linear-gradient(rgb(249, 108, 169) 50%, rgb(221, 221, 235) 50%);
+  background: linear-gradient(rgb(249, 108, 169) 50%, rgb(221, 221, 235) 50%);
 }
 
 .top{

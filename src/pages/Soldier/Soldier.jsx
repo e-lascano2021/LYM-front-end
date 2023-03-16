@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState} from 'react'
 import { getSoldier } from "../../services/armyService.js"
 import styles from "./Soldier.module.css"
+import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
 
 const Soldier = () => {
   let { id } = useParams()
@@ -41,7 +42,7 @@ const Soldier = () => {
           <p>{soldier.loveLanguages?.join(", ")}</p>
           <br/>
           <h6>Brownie Points:</h6>
-          <p>{soldier.currentPoints}/{soldier.totalPoints}</p>
+          <BrowniePoints edit={true} soldier={soldier}/>
         </div>
 
       </div>

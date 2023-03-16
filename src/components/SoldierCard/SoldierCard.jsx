@@ -12,8 +12,8 @@ const SoldierCard = ({soldier}) => {
         <br/>
         <h6>Love Languages:</h6>
         <p>{soldier.loveLanguages?.join(", ")}</p>
+        <BrowniePoints edit={false} soldier={soldier}/>
         <br/>
-        <BrowniePoints soldier={soldier}/>
       </div>
     </div>
   )
