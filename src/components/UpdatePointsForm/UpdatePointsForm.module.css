@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  background-color: rgba(74, 174, 207, 0.976); 
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius:0 10px 10px 0;
+}

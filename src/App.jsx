@@ -31,8 +31,8 @@ function App() {
 
   useEffect(() => {
     const fetchArmy = async () => {
-        const armyData = await armyService.getArmy()
-        setArmy(armyData)
+      const armyData = await armyService.getArmy()
+      setArmy(armyData)
     }
     if (user) fetchArmy()
   }, [user])
@@ -42,6 +42,11 @@ function App() {
     const newSoldier = await armyService.createSoldier(formData, photoData)
     setArmy([...army, newSoldier])
     navigate('/loveArmy')
+  }
+
+  const handleUpdateSoldier = async (soldier) => {
+    const updatedArmy= army.map(s => s._id === soldier._id ? soldier : s)
+    setArmy(updatedArmy)
   }
 
   return (
@@ -75,7 +80,9 @@ function App() {
         <Route path="/loveArmy/:id" 
           element={
             <ProtectedRoute user={user}>
-              <Soldier/>
+              <Soldier
+                handleUpdateSoldier={handleUpdateSoldier}
+              />
             </ProtectedRoute>
           } 
         />

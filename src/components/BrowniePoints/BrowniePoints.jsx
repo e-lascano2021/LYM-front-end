@@ -1,4 +1,5 @@
 import { useState } from "react"
+import UpdatePointsForm from "../UpdatePointsForm/UpdatePointsForm"
 import styles from "./BrowniePoints.module.css"
 
 const BrowniePoints = (props) => {
@@ -9,7 +10,7 @@ const BrowniePoints = (props) => {
   let color
   if (percentage < 30 ){
     color = "#FF0000"
-  } else if (percentage < 80 ){
+  } else if (percentage < 70 ){
     color = "#FFDE00"
   } else {
     color = "#009900"
@@ -28,25 +29,24 @@ const BrowniePoints = (props) => {
 
 
   return (
-    <div className={styles.container}>
+      <div className={styles.container}>
 
-      {props.edit &&
-        <button onClick={() => handleForm("Subtract")}>-</button>
-      }
+        {props.edit &&
+          <button onClick={() => handleForm("Subtract")}>-</button>
+        }
 
-      <div style={Parentdiv} className={styles.parentDiv}>
-        {`${props.soldier.currentPoints} / ${props.soldier.totalPoints}`}
+        <div style={Parentdiv} className={styles.parentDiv}>
+          {`${props.soldier.currentPoints} / ${props.soldier.totalPoints}`}
+        </div>
+
+        {props.edit && 
+          <button onClick={() => handleForm("Add")}>+</button>
+        }
+
+        {form && 
+          <UpdatePointsForm handleUpdateSoldier={props.handleUpdateSoldier} setSoldier={props.setSoldier} soldier={props.soldier} handleForm={handleForm} math={math} />
+        }
       </div>
-
-      {props.edit && 
-        <button onClick={() => handleForm("Add")}>+</button>
-      }
-
-      {/* {form ? 
-        <UpdatePointsForm soldier={props.soldier} handleForm={handleForm} math={math} /> :
-        ""
-      } */}
-    </div>
   )
 }
 

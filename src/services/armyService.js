@@ -68,8 +68,28 @@ async function createSoldier (formData, photoData) {
   }
 }
 
+async function updatePoints (id, points) {
+  try {
+    const res = await fetch(`${BASE_URL}/points/${id}`, {
+      method: "PATCH",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(points)
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
+
+
 export {
   createSoldier,
   getSoldier,
-  getArmy
+  getArmy,
+  updatePoints
 }

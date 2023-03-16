@@ -4,7 +4,7 @@ import { getSoldier } from "../../services/armyService.js"
 import styles from "./Soldier.module.css"
 import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
 
-const Soldier = () => {
+const Soldier = (props) => {
   let { id } = useParams()
   let [soldier, setSoldier] = useState(null)
 
@@ -21,7 +21,7 @@ const Soldier = () => {
   const handleTab = (tabName) => {
     setTab(tabName)
   }
-
+  
   if(!soldier) return <h1>Loading ...</h1>
   if(soldier.err) return <h1>{soldier.err}</h1>
 
@@ -42,7 +42,7 @@ const Soldier = () => {
           <p>{soldier.loveLanguages?.join(", ")}</p>
           <br/>
           <h6>Brownie Points:</h6>
-          <BrowniePoints edit={true} soldier={soldier}/>
+          <BrowniePoints handleUpdateSoldier={props.handleUpdateSoldier} setSoldier={setSoldier} edit={true} soldier={soldier}/>
         </div>
 
       </div>
