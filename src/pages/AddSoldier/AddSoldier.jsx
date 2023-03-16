@@ -23,11 +23,7 @@ const AddSoldier = ({handleAddSoldier}) => {
 
   const [image, setImage] = useState({photo: null})
   
-  const [formData, setFormData] = useState({
-    name: '',
-    loveTypes: [],
-    loveLanguages: []
-  })
+  const [formData, setFormData] = useState({})
   
   const handleLoveLanguages = e => {
     setFormData({...formData, "loveLanguages": e })

@@ -56,17 +56,15 @@ const Soldier = (props) => {
           <p onClick={() => handleTab("Core Memories")}>Core Memories</p>
         </div>
 
-        <div>
-          {tab === "Reminders" ? 
-            <p>{tab}</p> :
-          tab === "Plans" ?
-            <Plans/>:
-          tab === "Gifts" ?
-            <p>{tab}</p> 
-          :
-            <p>{tab}</p>
-          }
-        </div>
+        {tab === "Reminders" ? 
+          <p>{tab}</p> :
+        tab === "Plans" ?
+          <Plans plans={soldier.plans}/>:
+        tab === "Gifts" ?
+          <p>{tab}</p> 
+        :
+          <p>{tab}</p>
+        }
       </div>
 
     </main>
