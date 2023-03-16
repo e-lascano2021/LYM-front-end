@@ -45,6 +45,7 @@ const Army = (props) => {
       </div>
 
       <div className={styles.cardContainer}>
+        {!currentCards.length && <h3>You haven't added any Soldiers yet</h3>}
         {currentCards.map((soldier,idx) => 
           <Link key={idx} to={`/loveArmy/${soldier._id}`}>
             <SoldierCard soldier={soldier}/>

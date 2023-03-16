@@ -3,6 +3,7 @@ import { useEffect, useState} from 'react'
 import { getSoldier } from "../../services/armyService.js"
 import styles from "./Soldier.module.css"
 import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
+import Plans from "../../components/Plans/Plans.jsx"
 
 const Soldier = (props) => {
   let { id } = useParams()
@@ -59,7 +60,7 @@ const Soldier = (props) => {
           {tab === "Reminders" ? 
             <p>{tab}</p> :
           tab === "Plans" ?
-            <p>{tab}</p> :
+            <Plans/>:
           tab === "Gifts" ?
             <p>{tab}</p> 
           :
