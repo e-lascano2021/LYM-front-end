@@ -17,6 +17,11 @@ const Profile = ({user}) => {
   return (
     <>
       <h1>{profile.name}</h1>
+      <p>{profile.loveTypes.join(', ')}</p>
+      <p>{profile.loveLanguages.join(', ')}</p>
+      <p>{profile.plans[0].when}</p>
+      <p>{profile.plans[0].where}</p>
+      <p>{profile.plans[0].what}</p>
     </>
   )
 }

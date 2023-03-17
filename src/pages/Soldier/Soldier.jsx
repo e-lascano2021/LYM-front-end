@@ -59,7 +59,7 @@ const Soldier = (props) => {
         {tab === "Reminders" ? 
           <p>{tab}</p> :
         tab === "Plans" ?
-          <Plans plans={soldier.plans}/>:
+          <Plans soldier={soldier}/>:
         tab === "Gifts" ?
           <p>{tab}</p> 
         :
