@@ -8,6 +8,8 @@ import Plans from "../../components/Plans/Plans.jsx"
 const Soldier = (props) => {
   let { id } = useParams()
   let [soldier, setSoldier] = useState(null)
+  const [tab, setTab] = useState("Reminders")
+  const [form, setForm] = useState(false)
 
   useEffect(() => {
     const fetchSoldier = async () => {
@@ -17,11 +19,16 @@ const Soldier = (props) => {
     fetchSoldier()
   }, [id])
 
-  const [tab, setTab] = useState("Reminders")
 
   const handleTab = (tabName) => {
     setTab(tabName)
+    if(form) setForm(false)
   }
+
+  const handleForm = () => {
+    form ? setForm(false) : setForm(true)
+  }
+  console.log(form)
   
   if(!soldier) return <h1>Loading ...</h1>
   if(soldier.err) return <h1>{soldier.err}</h1>
@@ -56,10 +63,14 @@ const Soldier = (props) => {
           <p onClick={() => handleTab("Core Memories")}>Core Memories</p>
         </div>
 
+        {!form && 
+        <button onClick={handleForm}>Add {tab}</button>
+        }
+
         {tab === "Reminders" ? 
           <p>{tab}</p> :
         tab === "Plans" ?
-          <Plans soldier={soldier}/>:
+          <Plans form={form} setForm={setForm} soldier={soldier}/>:
         tab === "Gifts" ?
           <p>{tab}</p> 
         :
