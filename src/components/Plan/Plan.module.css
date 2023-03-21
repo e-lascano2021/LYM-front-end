@@ -1,0 +1,45 @@
+.card {
+  height: 150px;
+  width: 80%;
+  background-color: aquamarine;
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.when {
+  display: flex;
+  border-radius: 10px 10px 0px 0px;
+  height: 25px;
+  background-color: rgb(175, 174, 174);
+  justify-content: space-between;
+  padding: 0 15px;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.when > label {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed black;
+}
+
+.info > label{
+  font-size: small;
+  font-weight: 500;
+  width: 50%;
+}
+
+.info p {
+  font-weight: normal;
+}
+

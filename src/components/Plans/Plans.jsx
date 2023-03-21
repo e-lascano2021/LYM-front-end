@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { createPlan } from "../../services/planService"
-import Plan from "../Plan/Plan"
+import Plan from "../Plan/Plan.jsx"
+import styles from "./Plans.module.css"
 
 const Plans = (props) => {
   const [formData, setFormData] = useState({})
@@ -19,56 +20,56 @@ const Plans = (props) => {
 
 
   return (
-    <div>
-      <p>plans</p>
+    <div className={styles.container}>
       {props.form &&
-        <>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Date :</label>
+            <input
+              required
+              type="datetime-local"
+              name="when"
+              onChange={handleChange}
+            />
+          </div>
 
-            <div>
-              <label>Date :</label>
-              <input
-                required
-                type="datetime-local"
-                name="when"
-                onChange={handleChange}
-                />
-            </div>
+          <div>
+            <label>Where :</label>
+            <input
+              required
+              name="where"
+              onChange={handleChange}
+            />
+          </div>
 
-            <div>
-              <label>Where :</label>
-              <input
-                required
-                name="where"
-                onChange={handleChange}
-                />
-            </div>
+          <div>
+            <label>Plan :</label>
+            <input
+              required
+              name="what"
+              onChange={handleChange}
+            />
+          </div>
 
-            <div>
-              <label>Plan :</label>
-              <input
-                required
-                name="what"
-                onChange={handleChange}
-                />
-            </div>
+          <div>
+            <label>Notes :</label>
+            <textarea
+              required
+              name="notes"
+              onChange={handleChange}
+            />
+          </div>
 
-            <div>
-              <label>Notes :</label>
-              <textarea
-                required
-                name="notes"
-                onChange={handleChange}
-                />
-            </div>
-            <button>Add Plan</button>
-          </form>
-          <button onClick={()=> props.setForm()}>Cancel</button>
-        </>
+          <button type="submit" >Add Plan</button>
+          <button type="button" onClick={()=> props.setForm()}>Cancel</button>
+        </form>
       }
-      {plans?.map((plan, id) => 
-        <Plan key={id} plan={plan}/>
-      )}
+      
+      <div className={styles.list}>
+        {plans?.map((plan, id) => 
+          <Plan key={id} plan={plan}/>
+        )}
+      </div>
     </div>
   )
 }

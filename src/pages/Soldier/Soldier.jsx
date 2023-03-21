@@ -28,7 +28,6 @@ const Soldier = (props) => {
   const handleForm = () => {
     form ? setForm(false) : setForm(true)
   }
-  console.log(form)
   
   if(!soldier) return <h1>Loading ...</h1>
   if(soldier.err) return <h1>{soldier.err}</h1>
@@ -52,29 +51,29 @@ const Soldier = (props) => {
           <h6>Brownie Points:</h6>
           <BrowniePoints handleUpdateSoldier={props.handleUpdateSoldier} setSoldier={setSoldier} edit={true} soldier={soldier}/>
         </div>
+      </div>
 
+      <div className={styles.tab}>
+        <p onClick={() => handleTab("Reminders")}>Reminders</p>
+        <p onClick={() => handleTab("Plans")}>Dates/Hangouts</p>
+        <p onClick={() => handleTab("Gifts")}>Gifts</p>
+        <p onClick={() => handleTab("Core Memories")}>Core Memories</p>
       </div>
 
       <div className={styles.body}>
-        <div className={styles.tab}>
-          <p onClick={() => handleTab("Reminders")}>Reminders</p>
-          <p onClick={() => handleTab("Plans")}>Dates/Hangouts</p>
-          <p onClick={() => handleTab("Gifts")}>Gifts</p>
-          <p onClick={() => handleTab("Core Memories")}>Core Memories</p>
-        </div>
-
         {!form && 
-        <button onClick={handleForm}>Add {tab}</button>
+          <button onClick={handleForm}>Add {tab}</button>
         }
 
-        {tab === "Reminders" ? 
-          <p>{tab}</p> :
-        tab === "Plans" ?
-          <Plans form={form} setForm={setForm} soldier={soldier}/>:
-        tab === "Gifts" ?
-          <p>{tab}</p> 
-        :
-          <p>{tab}</p>
+        {
+          tab === "Reminders" ? 
+            <p>{tab}</p> :
+          tab === "Plans" ?
+            <Plans form={form} setForm={setForm} soldier={soldier}/>:
+          tab === "Gifts" ?
+            <p>{tab}</p> 
+          :
+            <p>{tab}</p>
         }
       </div>
 
