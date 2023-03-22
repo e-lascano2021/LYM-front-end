@@ -1,18 +1,26 @@
 import { useEffect, useState} from 'react'
 import Plan from '../../components/Plan/Plan.jsx'
-import * as profileService from '../../services/profileService.js'
+import { getProfile } from '../../services/profileService.js'
+import { deletePlan } from '../../services/planService.js'
 import styles from './Profile.module.css'
 
 const Profile = ({user}) => {
   let [profile, setProfile] = useState(null)
+  let [plans, setPlans] = useState([])
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const profileData = await profileService.getProfile(user.profile)
+      const profileData = await getProfile(user.profile)
       setProfile(profileData)
+      if(profileData.plans.length > 0) setPlans(profileData.plans)
     }
     fetchProfile()
   }, [user])
+
+  const handleDeletePlan = (plan) => {
+    deletePlan(plan._id, plan.who._id)
+    setPlans(plans.filter(p => p._id !== plan._id))
+  }
 
   if (!profile) return <h1>Loading ...</h1>
 
@@ -35,8 +43,11 @@ const Profile = ({user}) => {
 
       <div className={styles.container}>
         <h2>Plans</h2>
-        {profile.plans.map((plan,idx) => 
-          <Plan key={idx} plan={plan}/>
+        {plans.map((plan,idx) => 
+          <Plan key={idx}
+            handleDeletePlan={handleDeletePlan}
+            plan={plan}
+          />
         )}
       </div>
     </main>

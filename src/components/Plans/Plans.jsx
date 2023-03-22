@@ -70,7 +70,10 @@ const Plans = (props) => {
         <h3>No Plans Yet</h3> :
         <div className={styles.list}>
           {props.plans.map((plan, idx) => 
-            <Plan key={idx} plan={plan}/>
+            <Plan key={idx} 
+              plan={plan}
+              handleDeletePlan={props.handleDeletePlan}
+            />
           )}
         </div>
       }

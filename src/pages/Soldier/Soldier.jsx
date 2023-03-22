@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState} from 'react'
 import { getSoldier } from "../../services/armyService.js"
+import { deletePlan } from "../../services/planService.js"
 import styles from "./Soldier.module.css"
 import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
 import Plans from "../../components/Plans/Plans.jsx"
@@ -8,9 +9,9 @@ import Plans from "../../components/Plans/Plans.jsx"
 const Soldier = (props) => {
   let { id } = useParams()
   let [soldier, setSoldier] = useState(null)
-  const [tab, setTab] = useState("Reminders")
-  const [form, setForm] = useState(false)
-  const [plans, setPlans] = useState([])
+  let [tab, setTab] = useState("Plans")
+  let [form, setForm] = useState(false)
+  let [plans, setPlans] = useState([])
 
   useEffect(() => {
     const fetchSoldier = async () => {
@@ -21,6 +22,10 @@ const Soldier = (props) => {
     fetchSoldier()
   }, [id])
 
+  const handleDeletePlan = (plan) => {
+    deletePlan(plan._id, plan.who._id)
+    setPlans(plans.filter(p => p._id !== plan._id))
+  }
 
   const handleTab = (tabName) => {
     setTab(tabName)
@@ -71,7 +76,14 @@ const Soldier = (props) => {
           tab === "Reminders" ? 
             <p>{tab}</p> :
           tab === "Plans" ?
-            <Plans form={form} setPlans={setPlans} setForm={setForm} plans={plans} soldier={soldier}/>:
+            <Plans
+              handleDeletePlan={handleDeletePlan}
+              form={form}
+              setPlans={setPlans}
+              setForm={setForm}
+              plans={plans}
+              soldier={soldier}
+            />:
           tab === "Gifts" ?
             <p>{tab}</p> 
           :

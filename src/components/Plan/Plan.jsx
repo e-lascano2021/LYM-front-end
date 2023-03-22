@@ -10,7 +10,6 @@ const Plan = (props) => {
   hours = hours ? hours : 12
   const strTime = hours + ':' + minutes + ' ' + ampm
 
-
   return (
     <div className={styles.card}>
       <div className={styles.when}>
@@ -36,6 +35,7 @@ const Plan = (props) => {
       <label> Notes:
         <p>{props.plan.notes}</p>
       </label>
+      <button onClick={() => props.handleDeletePlan(props.plan)}>X</button>
 
     </div>
   )
