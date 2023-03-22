@@ -72,7 +72,6 @@ const Soldier = (props) => {
             <p>{tab}</p> :
           tab === "Plans" ?
             <Plans form={form} setPlans={setPlans} setForm={setForm} plans={plans} soldier={soldier}/>:
-            // <Plans form={form} setForm={setForm} soldier={soldier}/>:
           tab === "Gifts" ?
             <p>{tab}</p> 
           :

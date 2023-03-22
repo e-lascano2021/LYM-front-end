@@ -18,9 +18,21 @@ const Profile = ({user}) => {
 
   return (
     <main>
-      <h1>{profile.name}</h1>
-      <p>{profile.loveTypes.join(', ')}</p>
-      <p>{profile.loveLanguages.join(', ')}</p>
+      <div className={styles.header}>
+        <div className={styles.imageContainer}>
+          <img src={profile.photo} alt={`${profile.name}`}></img>
+          <h2>{profile.name}</h2>
+        </div>
+
+        <div className={styles.headerInfo}>
+          <h6>Love Types: </h6>
+          <p>{profile.loveTypes?.join(", ")}</p>
+          <br/>
+          <h6>Love Languages: </h6>
+          <p>{profile.loveLanguages?.join(", ")}</p>
+        </div>
+      </div>
+
       <div className={styles.container}>
         <h2>Plans</h2>
         {profile.plans.map((plan,idx) => 

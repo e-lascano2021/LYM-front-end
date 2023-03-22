@@ -6,3 +6,50 @@
   overflow-y:scroll;
   height: 80%;
 }
+
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 25%;
+  width: 95%;
+  margin: 10px;
+  border: double black 4px;
+  border-radius: 15px;
+}
+
+.header * img {
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 100px;
+  width: 90%;
+  object-fit: contain;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer > h2 {
+  margin: 0px;
+  text-decoration: underline peachpuff;
+  text-decoration-skip-ink: auto;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  text-align: center;
+  contain: content;
+}
+
+.headerInfo * {
+  margin: 0px;
+}

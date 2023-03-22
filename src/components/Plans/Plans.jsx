@@ -5,7 +5,6 @@ import styles from "./Plans.module.css"
 
 const Plans = (props) => {
   const [formData, setFormData] = useState({})
-  // const [plans, setPlans] = useState(props.soldier.plans)
 
   const handleChange = e => {  
     setFormData({...formData, [e.target.name]: e.target.value}) 
