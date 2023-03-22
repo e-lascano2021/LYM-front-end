@@ -17,10 +17,21 @@ async function createPlan (sodierId, formData) {
     throw error
   }
 }
-
-
+async function deletePlan (planId, sodierId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${planId}/${sodierId}`, {
+      method: "DELETE",
+      headers: { 'Authorization': 'Bearer ' + tokenService.getToken() },
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
 
 
 export {
-  createPlan
+  createPlan,
+  deletePlan
 }
