@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Select from 'react-select'
 import styles from './AddSoldier.module.css'
 
-const AddSoldier = ({handleAddSoldier}) => {
+const AddSoldier = (props) => {
   const loveTypesOptions = [
     { value: "Eros", label: "Eros" },
     { value: "Philia", label: "Philia" },
@@ -34,7 +34,7 @@ const AddSoldier = ({handleAddSoldier}) => {
   }
 
   const handleChange = e => {  
-    setFormData({...formData, [e.target?.name]: e.target?.value}) 
+    setFormData({...formData, [e.target.name]: e.target.value}) 
   }
 
   const handleImage = (evt) => {
@@ -43,7 +43,7 @@ const AddSoldier = ({handleAddSoldier}) => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    handleAddSoldier(formData, image)
+    props.handleAddSoldier(formData, image)
   }
 
   return (
@@ -69,7 +69,6 @@ const AddSoldier = ({handleAddSoldier}) => {
               name="name"
               autoComplete='off'
               placeholder="Enter Name here"
-              value={formData.name}
               onChange={handleChange}
             />
           </div>         

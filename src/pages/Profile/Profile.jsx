@@ -1,6 +1,7 @@
 import { useEffect, useState} from 'react'
 import Plan from '../../components/Plan/Plan.jsx'
 import * as profileService from '../../services/profileService.js'
+import styles from './Profile.module.css'
 
 const Profile = ({user}) => {
   let [profile, setProfile] = useState(null)
@@ -20,10 +21,8 @@ const Profile = ({user}) => {
       <h1>{profile.name}</h1>
       <p>{profile.loveTypes.join(', ')}</p>
       <p>{profile.loveLanguages.join(', ')}</p>
-      <p>{profile.plans[0].when}</p>
-      <p>{profile.plans[0].where}</p>
-      <p>{profile.plans[0].what}</p>
-      <div>
+      <div className={styles.container}>
+        <h2>Plans</h2>
         {profile.plans.map((plan,idx) => 
           <Plan key={idx} plan={plan}/>
         )}
