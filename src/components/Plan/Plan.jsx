@@ -1,6 +1,9 @@
+import { useState } from "react"
 import styles from "./Plan.module.css"
 
 const Plan = (props) => {
+  let [form, setForm] = useState(false)
+  let [formData, setFormData] = useState({})
   let date = new Date(props.plan.when).toString()
   let day = date.slice(4, 16)
   let hours = parseInt(date.slice(16, 18))
@@ -10,7 +13,68 @@ const Plan = (props) => {
   hours = hours ? hours : 12
   const strTime = hours + ':' + minutes + ' ' + ampm
 
+  const handleChange = e => {  
+    setFormData({...formData, [e.target.name]: e.target.value}) 
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    // const newPlan = await createPlan(props.soldier._id, formData)
+    // props.setPlans([...props.plans, newPlan])
+    props.setForm(false)
+  }
+
   return (
+    form ? 
+    <div className={styles.card}>
+      <form onSubmit={handleSubmit}>
+        <div div className={styles.when}>
+          <label>
+            <p>Date:</p>
+            <input
+              required
+              type="datetime-local"
+              name="when"
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+
+        <div className={styles.info}>
+          <label>
+            Where:
+            <input
+              required
+              autoComplete="off"
+              name="where"
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Plan:
+            <input
+              required
+              autoComplete="off"
+              name="what"
+              onChange={handleChange}
+            />
+          </label>
+        </div>
+
+        <div>
+          <label>Notes :</label>
+          <textarea
+            required
+            name="notes"
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit" >Add Plan</button>
+        <button type="button" onClick={()=> setForm(false)}>Cancel</button>
+      </form>
+    </div>
+    :
     <div className={styles.card}>
       <div className={styles.when}>
         <label> 
@@ -36,6 +100,7 @@ const Plan = (props) => {
         <p>{props.plan.notes}</p>
       </label>
       <button onClick={() => props.handleDeletePlan(props.plan)}>X</button>
+      <button onClick={() => setForm(true)}>Update</button>
 
     </div>
   )
