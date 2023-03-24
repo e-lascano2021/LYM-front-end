@@ -17,6 +17,7 @@ async function createPlan (sodierId, formData) {
     throw error
   }
 }
+
 async function deletePlan (planId, sodierId) {
   try {
     const res = await fetch(`${BASE_URL}/${planId}/${sodierId}`, {
@@ -30,8 +31,25 @@ async function deletePlan (planId, sodierId) {
   }
 }
 
+async function updatePlan (planId, formData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${planId}`, {
+      method: "PUT",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(formData),
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
 
 export {
   createPlan,
-  deletePlan
+  deletePlan,
+  updatePlan
 }
