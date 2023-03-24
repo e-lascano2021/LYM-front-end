@@ -72,6 +72,7 @@ const Plans = (props) => {
           {props.plans.map((plan, idx) => 
             <Plan key={idx} 
               plan={plan}
+              handleUpdatePlan={props.handleUpdatePlan}
               handleDeletePlan={props.handleDeletePlan}
             />
           )}

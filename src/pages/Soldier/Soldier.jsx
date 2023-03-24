@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState} from 'react'
 import { getSoldier } from "../../services/armyService.js"
-import { deletePlan } from "../../services/planService.js"
+import { deletePlan, updatePlan } from "../../services/planService.js"
 import styles from "./Soldier.module.css"
 import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
 import Plans from "../../components/Plans/Plans.jsx"
@@ -25,6 +25,11 @@ const Soldier = (props) => {
   const handleDeletePlan = (plan) => {
     deletePlan(plan._id, plan.who._id)
     setPlans(plans.filter(p => p._id !== plan._id))
+  }
+  const handleUpdatePlan = async (planId, planData ) => {
+    const updatedPlan = await updatePlan(planId, planData)
+    const newPlans = plans.map(p => (p._id === planId) ? updatedPlan : p)
+    setPlans(newPlans)
   }
 
   const handleTab = (tabName) => {
@@ -77,6 +82,7 @@ const Soldier = (props) => {
             <p>{tab}</p> :
           tab === "Plans" ?
             <Plans
+              handleUpdatePlan={handleUpdatePlan}
               handleDeletePlan={handleDeletePlan}
               form={form}
               setPlans={setPlans}

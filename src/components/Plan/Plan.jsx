@@ -16,23 +16,22 @@ const Plan = (props) => {
   const handleChange = e => {  
     setFormData({...formData, [e.target.name]: e.target.value}) 
   }
+  
 
   const handleSubmit = async e => {
     e.preventDefault()
-    // const newPlan = await createPlan(props.soldier._id, formData)
-    // props.setPlans([...props.plans, newPlan])
-    props.setForm(false)
+    props.handleUpdatePlan(props.plan._id, formData)
+    setForm(false)
   }
 
   return (
     form ? 
     <div className={styles.card}>
       <form onSubmit={handleSubmit}>
-        <div div className={styles.when}>
+        <div className={styles.when}>
           <label>
             <p>Date:</p>
             <input
-              required
               type="datetime-local"
               name="when"
               onChange={handleChange}
@@ -44,7 +43,6 @@ const Plan = (props) => {
           <label>
             Where:
             <input
-              required
               autoComplete="off"
               name="where"
               onChange={handleChange}
@@ -53,7 +51,6 @@ const Plan = (props) => {
           <label>
             Plan:
             <input
-              required
               autoComplete="off"
               name="what"
               onChange={handleChange}
@@ -64,13 +61,12 @@ const Plan = (props) => {
         <div>
           <label>Notes :</label>
           <textarea
-            required
             name="notes"
             onChange={handleChange}
           />
         </div>
 
-        <button type="submit" >Add Plan</button>
+        <button type="submit" >Update</button>
         <button type="button" onClick={()=> setForm(false)}>Cancel</button>
       </form>
     </div>

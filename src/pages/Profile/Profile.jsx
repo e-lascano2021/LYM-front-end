@@ -1,7 +1,7 @@
 import { useEffect, useState} from 'react'
 import Plan from '../../components/Plan/Plan.jsx'
 import { getProfile } from '../../services/profileService.js'
-import { deletePlan } from '../../services/planService.js'
+import { deletePlan, updatePlan } from '../../services/planService.js'
 import styles from './Profile.module.css'
 
 const Profile = ({user}) => {
@@ -20,6 +20,12 @@ const Profile = ({user}) => {
   const handleDeletePlan = (plan) => {
     deletePlan(plan._id, plan.who._id)
     setPlans(plans.filter(p => p._id !== plan._id))
+  }
+
+  const handleUpdatePlan = async (planId, planData ) => {
+    const updatedPlan = await updatePlan(planId, planData)
+    const newPlans = plans.map(p => (p._id === planId) ? updatedPlan : p)
+    setPlans(newPlans)
   }
 
   if (!profile) return <h1>Loading ...</h1>
@@ -45,6 +51,7 @@ const Profile = ({user}) => {
         <h2>Plans</h2>
         {plans.map((plan,idx) => 
           <Plan key={idx}
+            handleUpdatePlan={handleUpdatePlan}
             handleDeletePlan={handleDeletePlan}
             plan={plan}
           />
