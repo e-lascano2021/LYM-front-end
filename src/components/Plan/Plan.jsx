@@ -3,8 +3,14 @@ import styles from "./Plan.module.css"
 
 const Plan = (props) => {
   let [form, setForm] = useState(false)
-  let [formData, setFormData] = useState({})
   let date = new Date(props.plan.when).toString()
+  let [formData, setFormData] = useState({
+    when: props.plan.when.slice(0, 11) + date.slice(16, 21),
+    where: props.plan.where,
+    what: props.plan.what,
+    notes: props.plan.notes
+  })
+
   let day = date.slice(4, 16)
   let hours = parseInt(date.slice(16, 18))
   let minutes = date.slice(19, 21)
@@ -34,6 +40,7 @@ const Plan = (props) => {
             <input
               type="datetime-local"
               name="when"
+              value={formData.when}
               onChange={handleChange}
             />
           </label>
@@ -45,6 +52,7 @@ const Plan = (props) => {
             <input
               autoComplete="off"
               name="where"
+              value={formData.where}
               onChange={handleChange}
             />
           </label>
@@ -53,6 +61,7 @@ const Plan = (props) => {
             <input
               autoComplete="off"
               name="what"
+              value={formData.what}
               onChange={handleChange}
             />
           </label>
@@ -62,6 +71,7 @@ const Plan = (props) => {
           <label>Notes :</label>
           <textarea
             name="notes"
+            value={formData.notes}
             onChange={handleChange}
           />
         </div>
