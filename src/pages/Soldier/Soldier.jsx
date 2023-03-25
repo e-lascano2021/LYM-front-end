@@ -5,6 +5,7 @@ import { deletePlan, updatePlan } from "../../services/planService.js"
 import styles from "./Soldier.module.css"
 import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
 import Plans from "../../components/Plans/Plans.jsx"
+import Gifts from "../../components/Gifts/Gifts.jsx"
 
 const Soldier = (props) => {
   let { id } = useParams()
@@ -91,7 +92,7 @@ const Soldier = (props) => {
               soldier={soldier}
             />:
           tab === "Gifts" ?
-            <p>{tab}</p> 
+            <Gifts/>
           :
             <p>{tab}</p>
         }
