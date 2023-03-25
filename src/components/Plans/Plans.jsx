@@ -55,7 +55,7 @@ const Plans = (props) => {
           <div>
             <label>Notes :</label>
             <textarea
-              required
+              // required
               name="notes"
               onChange={handleChange}
             />

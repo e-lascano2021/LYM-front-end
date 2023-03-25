@@ -10,7 +10,7 @@ const Profile = ({user}) => {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const profileData = await getProfile(user.profile)
+      const profileData = await getProfile()
       setProfile(profileData)
       if(profileData.plans.length > 0) setPlans(profileData.plans)
     }

@@ -17,7 +17,7 @@ async function signup(formData, photoData) {
       if (photoData.photo && user) {
         const data = new FormData()
         data.append('photo', photoData.photo)
-        await addPhoto(data, user.profile)
+        await addPhoto(data)
       }
     }
     if (json.err) {

@@ -3,9 +3,9 @@ const BASE_URL = `${process.env.REACT_APP_BACK_END_SERVER_URL}/api/profiles`
 
 
 
-async function addPhoto(photoData, id) {
+async function addPhoto(photoData) {
   try {
-    const res = await fetch(`${BASE_URL}/${id}/add-photo`, {
+    const res = await fetch(`${BASE_URL}/add-photo`, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`
@@ -18,9 +18,9 @@ async function addPhoto(photoData, id) {
   }
 }
 
-async function getProfile(id){
+async function getProfile(){
   try {
-    const res = await fetch(`${BASE_URL}/${id}`, {
+    const res = await fetch(`${BASE_URL}/`, {
       method: "GET",
       headers: { 'Authorization': 'Bearer ' + tokenService.getToken() },
     })
