@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { createGift } from "../../services/armyService"
+import { createGift } from "../../services/armyService.js"
+import Gift from "../Gift/Gift.jsx"
 
 const Gifts = (props) => {
   const [formData, setFormData] = useState({})
@@ -56,11 +57,7 @@ const Gifts = (props) => {
         <h3>No Gifts Yet</h3> :
         <div>
           {props.gifts.map((gift, idx) => 
-            <div key={idx}>
-              <p>{gift.item}</p>
-              <p>{gift.where}</p>
-              <p>{gift.notes}</p>
-            </div>
+            <Gift key={idx} gift={gift}/>
           )}
         </div>
       }
