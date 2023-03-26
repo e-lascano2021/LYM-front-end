@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { createGift } from "../../services/armyService"
 
 const Gifts = (props) => {
   const [formData, setFormData] = useState({})
@@ -9,6 +10,8 @@ const Gifts = (props) => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    let newGift = await createGift(props.soldier._id, formData)
+    props.setGifts([...props.gifts, newGift])
     props.setForm()
   }
   

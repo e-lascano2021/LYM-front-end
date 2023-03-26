@@ -85,11 +85,29 @@ async function updatePoints (id, points) {
   }
 }
 
+async function createGift (id, formData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/gifts`, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(formData)
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
 
 
 export {
   createSoldier,
   getSoldier,
   getArmy,
-  updatePoints
+  updatePoints,
+  createGift
 }
