@@ -36,13 +36,12 @@ const Soldier = (props) => {
   }
 
   const handleTab = (tabName) => {
-    setTab(tabName)
-    if(form) setForm(false)
+    if (tabName !== tab) {
+      setTab(tabName)
+      if (form) setForm(false)
+    }
   }
 
-  const handleForm = () => {
-    form ? setForm(false) : setForm(true)
-  }
   
   if(!soldier) return <h1>Loading ...</h1>
   if(soldier.err) return <h1>{soldier.err}</h1>
@@ -77,7 +76,7 @@ const Soldier = (props) => {
 
       <div className={styles.body}>
         {!form && 
-          <button onClick={handleForm}>Add {tab}</button>
+          <button onClick={() => setForm(true)}>Add {tab}</button>
         }
 
         {
