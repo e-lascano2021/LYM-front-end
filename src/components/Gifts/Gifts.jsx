@@ -1,16 +1,28 @@
-const Gifts = (props) => {
+import { useState } from "react"
 
+const Gifts = (props) => {
+  const [formData, setFormData] = useState({})
+
+  const handleChange = e => {  
+    setFormData({...formData, [e.target.name]: e.target.value}) 
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    props.setForm()
+  }
   
   return (
     <div>
       {props.form &&
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <label>Gift Idea :</label>
             <input
               required
               autoComplete="off"
               name="item"
+              onChange={handleChange}
             />
           </div>
 
@@ -20,6 +32,7 @@ const Gifts = (props) => {
               required
               autoComplete="off"
               name="where"
+              onChange={handleChange}
             />
           </div>
 
@@ -27,6 +40,7 @@ const Gifts = (props) => {
             <label>Notes :</label>
             <textarea
               name="notes"
+              onChange={handleChange}
             />
           </div>
 

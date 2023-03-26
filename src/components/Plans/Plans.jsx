@@ -14,7 +14,7 @@ const Plans = (props) => {
     e.preventDefault()
     const newPlan = await createPlan(props.soldier._id, formData)
     props.setPlans([...props.plans, newPlan])
-    props.setForm()
+    props.setForm(false)
   }
 
 
