@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { createGift } from "../../services/armyService.js"
+import styles from "./Gifts.module.css"
 import Gift from "../Gift/Gift.jsx"
 
 const Gifts = (props) => {
@@ -17,7 +18,7 @@ const Gifts = (props) => {
   }
   
   return (
-    <div>
+    <div className={styles.container}>
       {props.form &&
         <form onSubmit={handleSubmit}>
           <div>
@@ -55,7 +56,7 @@ const Gifts = (props) => {
 
       {props.gifts.length === 0 ?
         <h3>No Gifts Yet</h3> :
-        <div>
+        <div className={styles.list}>
           {props.gifts.map((gift, idx) => 
             <Gift key={idx} gift={gift}/>
           )}
