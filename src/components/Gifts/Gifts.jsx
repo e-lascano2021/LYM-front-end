@@ -58,7 +58,10 @@ const Gifts = (props) => {
         <h3>No Gifts Yet</h3> :
         <div className={styles.list}>
           {props.gifts.map((gift, idx) => 
-            <Gift key={idx} gift={gift}/>
+            <Gift key={idx}
+              gift={gift}
+              handleDeleteGift={props.handleDeleteGift}
+            />
           )}
         </div>
       }

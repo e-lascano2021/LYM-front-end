@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState} from 'react'
 import { getSoldier } from "../../services/armyService.js"
 import { deletePlan, updatePlan } from "../../services/planService.js"
+import { deleteGift } from "../../services/armyService.js"
 import styles from "./Soldier.module.css"
 import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
 import Plans from "../../components/Plans/Plans.jsx"
@@ -29,10 +30,16 @@ const Soldier = (props) => {
     deletePlan(plan._id, plan.who._id)
     setPlans(plans.filter(p => p._id !== plan._id))
   }
+
   const handleUpdatePlan = async (planId, planData ) => {
     const updatedPlan = await updatePlan(planId, planData)
     const newPlans = plans.map(p => (p._id === planId) ? updatedPlan : p)
     setPlans(newPlans)
+  }
+
+  const handleDeleteGift = (giftId) => {
+    deleteGift(soldier._id, giftId)
+    setGifts(gifts.filter(g => g._id !== giftId))
   }
 
   const handleTab = (tabName) => {
@@ -94,6 +101,7 @@ const Soldier = (props) => {
             />:
           tab === "Gifts" ?
             <Gifts
+              handleDeleteGift={handleDeleteGift}
               form={form}
               setForm={setForm}
               gifts={gifts}
