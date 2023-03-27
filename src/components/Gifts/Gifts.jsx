@@ -61,6 +61,7 @@ const Gifts = (props) => {
             <Gift key={idx}
               gift={gift}
               handleDeleteGift={props.handleDeleteGift}
+              handleUpdateGift={props.handleUpdateGift}
             />
           )}
         </div>
