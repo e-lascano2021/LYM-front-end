@@ -117,11 +117,29 @@ async function deleteGift(id, giftId) {
   }
 }
 
+async function updateGift (id, giftId, formData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/gifts/${giftId}`, {
+      method: "PUT",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(formData)
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   createSoldier,
   getSoldier,
   getArmy,
   updatePoints,
   createGift,
-  deleteGift
+  deleteGift,
+  updateGift
 }
