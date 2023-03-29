@@ -166,6 +166,23 @@ async function deleteReminder(id, reminderId) {
   }
 }
 
+async function updateReminder (id, reminderId, formData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/reminders/${reminderId}`, {
+      method: "PUT",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(formData)
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
 export {
   createSoldier,
   getSoldier,
@@ -175,5 +192,6 @@ export {
   deleteGift,
   updateGift,
   createReminder,
-  deleteReminder
+  deleteReminder,
+  updateReminder
 }
