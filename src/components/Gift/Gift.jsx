@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styles from "./Gift.module.css"
+
 const Gift = (props) => {
   let [form, setForm] = useState(false)
   let [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ const Gift = (props) => {
         </div>
 
         <div>
-          <label>Notes :</label>
+          <label>Notes:</label>
           <textarea
             name="notes"
             value={formData.notes}
@@ -55,7 +56,7 @@ const Gift = (props) => {
           />
         </div>
 
-        <button type="submit" >Update</button>
+        <button type="submit">Update</button>
         <button type="button" onClick={()=> setForm(false)}>Cancel</button>
       </form>
     </div>
