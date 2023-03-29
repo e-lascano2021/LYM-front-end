@@ -101,6 +101,8 @@ const Soldier = (props) => {
               form={form}
               setForm={setForm}
               reminders={reminders}
+              setReminders={setReminders}
+              soldier={soldier}
             /> :
           tab === "Plans" ?
             <Plans
