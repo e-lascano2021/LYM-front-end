@@ -151,6 +151,20 @@ async function createReminder (id, formData) {
   }
 }
 
+async function deleteReminder(id, reminderId) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/gifts/${reminderId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
 
 export {
   createSoldier,
@@ -160,5 +174,6 @@ export {
   createGift,
   deleteGift,
   updateGift,
-  createReminder
+  createReminder,
+  deleteReminder
 }
