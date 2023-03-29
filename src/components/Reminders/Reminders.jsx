@@ -65,6 +65,7 @@ const Reminders = (props) => {
         <div>
           {props.reminders.map((reminder, idx) => 
             <Reminder key={idx}
+              handleUpdateReminder={props.handleUpdateReminder}
               reminder={reminder}
             />
           )}

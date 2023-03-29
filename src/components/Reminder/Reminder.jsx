@@ -13,10 +13,16 @@ const Reminder = (props) => {
     setFormData({...formData, [e.target.name]: e.target.value}) 
   }
 
+  const handleSubmit = async e => {
+    e.preventDefault()
+    props.handleUpdateReminder(props.reminder._id, formData)
+    setForm(false)
+  }
+
   return (
     form ? 
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>
             <p>Quote/Reminder:</p>
