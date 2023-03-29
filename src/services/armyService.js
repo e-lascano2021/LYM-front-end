@@ -153,7 +153,7 @@ async function createReminder (id, formData) {
 
 async function deleteReminder(id, reminderId) {
   try {
-    const res = await fetch(`${BASE_URL}/${id}/gifts/${reminderId}`, {
+    const res = await fetch(`${BASE_URL}/${id}/reminders/${reminderId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`

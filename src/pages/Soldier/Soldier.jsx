@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState} from 'react'
 import { getSoldier } from "../../services/armyService.js"
 import { deletePlan, updatePlan } from "../../services/planService.js"
-import { deleteGift, updateGift, updateReminder } from "../../services/armyService.js"
+import { deleteGift, updateGift, deleteReminder,updateReminder } from "../../services/armyService.js"
 import styles from "./Soldier.module.css"
 import BrowniePoints from "../../components/BrowniePoints/BrowniePoints.jsx"
 import Plans from "../../components/Plans/Plans.jsx"
@@ -49,6 +49,11 @@ const Soldier = (props) => {
     const updatedGift = await updateGift(soldier._id, giftId, giftData)
     const newGifts = gifts.map(g => (g._id === giftId) ? updatedGift : g)
     setGifts(newGifts)
+  }
+
+  const handleDeleteReminder = (reminderId) => {
+    deleteReminder(soldier._id, reminderId)
+    setReminders(reminders.filter(r => r._id !== reminderId))
   }
 
   const handleUpdateReminder = async (reminderId, reminderData ) => {
@@ -105,6 +110,7 @@ const Soldier = (props) => {
           tab === "Reminders" ? 
             <Reminders
               handleUpdateReminder={handleUpdateReminder}
+              handleDeleteReminder={handleDeleteReminder}
               form={form}
               setForm={setForm}
               reminders={reminders}

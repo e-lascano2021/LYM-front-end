@@ -78,6 +78,7 @@ const Reminder = (props) => {
       <p>{props.reminder.link}</p>
       <p>{props.reminder.author}</p>
       <p>{props.reminder.notes}</p>
+      <button onClick={() => props.handleDeleteReminder(props.reminder._id)}>X</button>
       <button onClick={() => setForm(true)}>Update</button>
     </div>
   )
