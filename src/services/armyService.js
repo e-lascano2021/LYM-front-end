@@ -134,6 +134,24 @@ async function updateGift (id, giftId, formData) {
   }
 }
 
+async function createReminder (id, formData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}/reminders`, {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(formData)
+    })
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw error
+  }
+}
+
+
 export {
   createSoldier,
   getSoldier,
@@ -141,5 +159,6 @@ export {
   updatePoints,
   createGift,
   deleteGift,
-  updateGift
+  updateGift,
+  createReminder
 }
