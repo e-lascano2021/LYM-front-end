@@ -16,6 +16,7 @@ const Soldier = (props) => {
   let [form, setForm] = useState(false)
   let [plans, setPlans] = useState([])
   let [gifts, setGifts] = useState([])
+  let [reminders, setReminders] = useState([])
 
   useEffect(() => {
     const fetchSoldier = async () => {
@@ -23,6 +24,7 @@ const Soldier = (props) => {
       setSoldier(soldierData)
       if(soldierData.plans.length > 0) setPlans(soldierData.plans)
       if(soldierData.gifts.length > 0) setGifts(soldierData.gifts)
+      if(soldierData.reminders.length > 0) setReminders(soldierData.reminders)
     }
     fetchSoldier()
   }, [id])
@@ -95,7 +97,9 @@ const Soldier = (props) => {
 
         {
           tab === "Reminders" ? 
-            <Reminders/> :
+            <Reminders
+            reminders={reminders}
+            /> :
           tab === "Plans" ?
             <Plans
               handleUpdatePlan={handleUpdatePlan}
