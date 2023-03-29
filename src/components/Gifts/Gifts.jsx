@@ -22,7 +22,7 @@ const Gifts = (props) => {
       {props.form &&
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Gift Idea :</label>
+            <label>Gift Idea:</label>
             <input
               required
               autoComplete="off"

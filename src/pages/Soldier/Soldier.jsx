@@ -98,7 +98,9 @@ const Soldier = (props) => {
         {
           tab === "Reminders" ? 
             <Reminders
-            reminders={reminders}
+              form={form}
+              setForm={setForm}
+              reminders={reminders}
             /> :
           tab === "Plans" ?
             <Plans
